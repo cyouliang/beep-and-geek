@@ -1,7 +1,82 @@
+body {
+    background-color: #FCEBBB;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+header {
+    background-color: #FCEBBB;
+    text-align: center;
+}
+
+#leftcolumn {
+    text-align: center;
+    width: 160px;
+    float: left;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: antiquewhite;
+    height: auto;
+    border-style: ridge; 
+}
+
+#rightcolumn {
+    background-color: aliceblue;
+    margin-left: 15%;
+    padding-left: 20px;
+    border-style: inset;
+}
+
+#rightcolumn_2 {
+    background-color: aliceblue;
+    margin-left: 15%;
+    padding-left: 20px;
+    border-style: inset;
+}
+
+.photocontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.photocontent img{
+    flex-shrink: 0;
+}
+
+.photocontent_2 {
+    display: inline-block;
+    text-align: center;
+}
+
+nav a{
+    display: block;
+}
+
 #wrapper {
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 95%;
+    width: 100%;
     min-width: 800px;
+}
+
+#description {
+    font-family: Helvetica, Verdana, sans-serif;
+    text-decoration: underline;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    text-justify: inter-word;
+}
+
+#promotionalbanner{
+    font-family: Helvetica, Verdana, sans-serif;
+    text-align:center;
+    color: red;
+}
+
+#buttonEnter {
+    font-family: Helvetica, Verdana, sans-serif;
+    text-align: center;
 }
