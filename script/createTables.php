@@ -1,5 +1,4 @@
 <?php
-
 include "connectDB.php";
 
 $sql = 
@@ -11,18 +10,21 @@ Phone INT(20),
 Email VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE Product_Main (
+ProductName VARCHAR(30) PRIMARY KEY NOT NULL,
+Category VARCHAR(20) NOT NULL,
+ProductImage VARCHAR (50) NOT NULL
+);
+
 CREATE TABLE Products (
 ProductID VARCHAR(6) PRIMARY KEY NOT NULL,
 ProductName VARCHAR(30) NOT NULL,
-Category VARCHAR(20) NOT NULL,
+VariantImage VARCHAR (50) NOT NULL,
 Price DOUBLE NOT NULL,
+Stock INT(6) DEFAULT 0,
 Color VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE Images (
-ProductName VARCHAR(30) NOT NULL,
-Image VARCHAR(20) NOT NULL
-);
 
 CREATE TABLE Orders (
 OrderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -44,6 +46,5 @@ if (mysqli_multi_query($conn, $sql)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
-
 mysqli_close($conn);
 ?>
