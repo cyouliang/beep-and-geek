@@ -1,13 +1,13 @@
 <?php
-
 include "connectDB.php";
 
 $sql = '
-DROP TABLE Customers;
-DROP TABLE Products; 
-DROP TABLE Images;
-DROP TABLE Orders; 
-DROP TABLE Order_Items
+DROP TABLE IF EXISTS Products; 
+DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS Product_Main;
+DROP TABLE IF EXISTS Image ;
+DROP TABLE IF EXISTS Orders; 
+DROP TABLE IF EXISTS Order_Items
 ';
 
 
@@ -16,6 +16,5 @@ if (mysqli_multi_query($conn, $sql)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
-
 mysqli_close($conn);
 ?>
