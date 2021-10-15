@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
-    <link type="text/css" rel="stylesheet" href="magicscroll-trial/magicscroll/magicscroll.css" />
-    <script type="text/javascript" src="magicscroll-trial/magicscroll/magicscroll.js"></script>
+    <title>Beep and Geek</title>
     <?php
         //Queries database for product information and image
         include "script/connectDB.php";
         $category = $_GET['browseby'];
+    
         $categories = array('phone', 'laptop', 'earphone');
         if (in_array($category, $categories, true)) {
             $query = "SELECT Product_Main.ProductName AS product, 
@@ -57,7 +57,7 @@
     </div>
 
     <div id="pagelayout">
-        <div id="rightcolumn">
+        <div id="rightcolumn_2">
             <table border = "0" id = "product-table">
             <?php
                 //Populate page with information from database
