@@ -1,33 +1,56 @@
+<?php
+// Session
+session_start();
+// Initialise cart
+if (empty($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+if (isset($_SESSION['newly_added'])) {
+    $new_item = $_SESSION['newly_added'];
+    unset($_SESSION['newly_added']);
+    unset($_SESSION['recent_action']);
+}
+if (isset($_GET['buy'])) {
+    $_SESSION['cart'][] = $_GET['buy'];
+    $_SESSION['recent_action'] = 'add_cart';
+    $_SESSION['newly_added'] = $_GET['product_added'];
+    header('location: ' . $_SERVER['PHP_SELF'] . '?product=' . $_GET['product'] . '#product-table');
+    exit();
+}
+// print_r($_SESSION['cart']);
+
+// Get product info
+$product = $_GET['product'];
+include "script/connectDB.php";
+$query = "SELECT * FROM Products WHERE ProductName = '$product'";
+$result = mysqli_query($conn, $query);
+$rowcount = mysqli_num_rows($result);
+if ($rowcount == 0) die("Sorry this product does not exists");
+$rows = array();
+while ($row = mysqli_fetch_array($result)) {
+    $rows[] = $row;
+}
+// echo '<pre>' . var_export($rows, true) . '</pre>';
+mysqli_free_result($result);
+mysqli_close($conn);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Beep and Geek</title>
-    <?php
-        $product = $_GET['product'];
-        include "script/connectDB.php";
-        $query = "SELECT * FROM Products WHERE ProductName = '$product'";
-        $result = mysqli_query($conn, $query);
-        $rowcount = mysqli_num_rows($result);
-        $rows = array();
-        while($row = mysqli_fetch_array($result))
-        {
-            $rows[] = $row;
-        }
-
-        echo '<pre>'. var_export($rows,true) .'</pre>';
-        mysqli_close($conn);
-    ?>
+    <title>B&G - <?= $product ?></title>
 </head>
 
 
 <body>
     <header>
-        <a href="index2.html"><img src="../beep-and-geek/img/logo.png" alt="maincatalog"></a>
+        <a href="index2.html"><img src="img/logo.png" alt="Go back to main page"></a>
     </header>
 
     <div id="topnavbar">
@@ -39,101 +62,75 @@
                 <a href="catalogue.php?browseby=laptop">Laptops</a>
                 <a href="catalogue.php?browseby=earphone">Earphones</a>
             </b>
-           </nav>
+        </nav>
     </div>
 
     <div id="pagelayout">
         <div id="rightcolumn_2">
-        
-        <!-- Slideshow container -->
+
+            <!-- Slideshow container -->
             <div class="slideshow-container">
                 <!-- Full-width images with number and caption text -->
-                
 
-                <?php
-                    foreach($rows as $row){
-                        $image = $row['VariantImage'];
-                        $name = $row['ProductName'];
-                        $color = $row['Color'];
-                        $price = $row['Price'];
-                        $productid = $row['ProductID'];
+                <?php foreach ($rows as $row) : ?>
+                    <div class="mySlides fade">
+                        <div class="numbertext"> <?= $row['ProductID'] . ' / ' . $rowcount ?></div>
+                        <img src="img/products/<?= $row['VariantImage'] ?>" style="width:100%">
+                        <div class="text"><strong><?= $row['ProductName'] ?><br><?= $row['Color'] ?><br> $<?= $row['Price'] ?></strong></div>
+                    </div>
+                <?php endforeach; ?>
 
-                        echo
-                        '
-                        <div class="mySlides fade">
-                            <div class="numbertext">'.$productid.' / '.$rowcount.'</div>
-                            <img src=" img/products/'.$image.'" style="width:100%">
-                            <div class="text"><strong>'.$name.'<br>'.$color.'<br> $'.$price.'</strong></div>
-                        </div>
-                        ';
-                    }
-                
-                ?>
-                
-                <!-- <div class="mySlides fade">
-                    <div class="numbertext">2 / 4</div>
-                    <img src="../beep-and-geek/img/products/iphone13pro-sierrablue.png" style="width:100%">
-                    <div class="text"><strong>iPhone 13 Pro <br> Sierra Blue</strong></div>
-                </div>
-                
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 4</div>
-                    <img src="../beep-and-geek/img/products/iphone13pro-gold.png" style="width:100%">
-                    <div class="text"><strong>iPhone 13 Pro <br> Gold</strong></div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">4 / 4</div>
-                    <img src="../beep-and-geek/img/products/iphone13pro-silver.png" style="width:100%">
-                    <div class="text"><strong>iPhone 13 Pro <br> Silver</strong></div>
-                </div> -->
-                
                 <!-- Next and previous buttons -->
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                
+
                 <br>
 
                 <!-- The dots/circles -->
                 <div style="text-align:center">
-                <?php 
-                switch($rowcount)
-                {   
-                    case("2")?>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span> 
-                <?php break; 
-                    case("3")?>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                <?php break; 
-                    case("4")?>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>  
-                <?php break; 
-                    case("5")
-                   ?>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span> 
-                <?php break;
-                } ?> 
-                
+                    <?php for ($i = 1; $i <= $rowcount; $i++) : ?>
+                        <span class="dot" onclick="currentSlide(<?= $i ?>)"></span>
+                    <?php endfor; ?>
                 </div>
             </div>
-        </div>        
-        
+            <div id="product-table">
+                <table border="1">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Color</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Add to cart</th>
+                    </tr>
+                    <!-- Generate row for each product variant -->
+                    <?php foreach ($rows as $row) : ?>
+                        <?php
+                        // URL back to original product page
+                        $cartlink = $_SERVER['PHP_SELF'] . '?product=' . $_GET['product'] . '&buy=' . $row["ProductID"] . '&product_added=' . $row["ProductName"] . ' ' . $row["Color"];
+                        $cartlink = basename($cartlink);
+                        ?>
+                        <tr>
+                            <td><?= $row['ProductName'] . ' ' . $row['Color'] ?></td>
+                            <td><?= $row['Color'] ?></td>
+                            <td>$<?= $row['Price'] ?></td>
+                            <td><?= $row['Stock'] ?></td>
+                            <td align="center"><a href="<?= $cartlink ?>"> <img src="img/cart.png" alt="Buy" width="50px"> </a></td>
+                        </tr>
+
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            <?php if (isset($new_item)) : ?>
+                <p>Successfully added to cart: <?= $new_item ?></p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION['cart'])) : ?>
+                <div id="checkout"><a href=checkout.php>
+                        <p>Go to cart</p>
+                    </a></div>
+            <?php endif ?>
+        </div>
         <script type="text/javascript" src="promaxslideshow.js"></script>
-
     </div>
-    
 </body>
+
 </html>
-
-
-
