@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@1,200&display=swap');
+body {
+    margin: 0;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 70px auto;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto 100px 100px;
+    align-items: center;
+}
+
+.content {
+    grid-row: 2 / 3;
+    background-image: url(../img/background1.jfif);
+    background-position-y: -200px;
+    background-position-x: 50%;
+    background-repeat: repeat;
+    background-size: 50%;
+    background-color: #0b0c10;
+}
+
+#tagline {
+    font-family: 'Roboto';
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 2em;
+    width: 400px;
+    position: absolute;
+    top: 450px;
+    left: calc((100% - 400px)/2 - 50px);
+    right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #e3e2df;
+    border: 3px #66fcf1 solid;
+}
+
+#name {
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 50px;
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    color: black;
+}
+
+#login {
+    text-decoration: none;
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+#cart {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    background-color: #ea4c89;
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 5px;
+    color: white;
+}
+
+#banner {
+    width: 800px;
+    position: absolute;
+    left: calc((100% - 800px) / 2);
+    right: auto;
+    top: -150px;
+}
+
+#arrows {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 625px;
+    left: calc(50% - 14px);
+}
+
+.one {
+    position: absolute;
+}
+
+.two {
+    position: absolute;
+    top: 10px;
+}
+
+.three {
+    position: absolute;
+    top: 20px;
+}
+
+.arrow::before,
+.arrow::after {
+    position: relative;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: grey;
+}
+
+.arrow::before {
+    transform: rotate(45deg);
+}
+
+.arrow::after {
+    left: 14px;
+    transform: rotate(-45deg);
+}
+
+.hidden {
+    display: none;
+}
+
+header a {
+    text-decoration: none;
+}
