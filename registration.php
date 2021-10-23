@@ -60,8 +60,8 @@ if(isset($_POST['submit']))
         <a href="">
             <div id="name">Beep&Geek</div>
         </a>
-        <a href="login.html">
-            <div id="login">Login/Register</div>
+        <a href="loginpage.php">
+            <div id="login">Login</div>
         </a>
         <a href="checkout.php">
             <div id="cart">Cart</div>
