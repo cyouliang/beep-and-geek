@@ -61,7 +61,7 @@ mysqli_close($conn);
 <?php endif; ?>
     <div id="container">
         <header>
-            <a href="">
+            <a href="index.html">
                 <div id="name">Beep&Geek</div>
             </a>
             <a href="loginpage.php">
