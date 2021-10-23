@@ -64,8 +64,8 @@ mysqli_close($conn);
             <a href="">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="checkout.php">
-                <div id="login">Checkout</div>
+            <a href="loginpage.php">
+                <div id="login">Login</div>
             </a>
             <a href="checkout.php">
                 <div id="cart">Cart</div>
