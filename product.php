@@ -61,10 +61,10 @@ mysqli_close($conn);
 <?php endif; ?>
     <div id="container">
         <header>
-            <a href="index.html">
+            <a href="index3.html">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="loginpage.php">
+            <a href="loginpage.html">
                 <div id="login">Login</div>
             </a>
             <a href="checkout.php">
@@ -164,7 +164,7 @@ mysqli_close($conn);
                         </p>
                     </div>
                 </div>
-                <script type="text/javascript" src="promaxslideshow.js"></script>
+                <script type="text/javascript" src="slideshow.js"></script>
             </div>
         </div>
     </div>

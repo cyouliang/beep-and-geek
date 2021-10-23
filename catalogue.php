@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+var_dump($_SESSION['valid_user']);
 // Initialise cart
 if (empty($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
@@ -54,10 +54,11 @@ mysqli_close($conn);
 <body>
     <div id="container">
         <header>
-                <a href="index.html">
+                <a href="index3.html">
                     <div id="name">Beep&Geek</div>
                 </a>
-                <a href="loginpage.php">
+
+                <a href="loginpage.html">
                     <div id="login">Login</div>
                 </a>
                 <a href="checkout.php">

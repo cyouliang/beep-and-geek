@@ -57,10 +57,10 @@ if(isset($_POST['submit']))
 <body>
 <div id="container">
     <header>
-        <a href="">
+        <a href="index3.html">
             <div id="name">Beep&Geek</div>
         </a>
-        <a href="loginpage.php">
+        <a href="loginpage.html">
             <div id="login">Login</div>
         </a>
         <a href="checkout.php">
