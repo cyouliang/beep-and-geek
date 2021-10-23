@@ -46,20 +46,30 @@ mysqli_close($conn);
     <link rel="stylesheet" href="stylesheet.css">
     <title>B&G - <?= $product ?></title>
 </head>
+<script>
+    function success_msg(item) {
+        if (item) {
+            alert("Successfully added to cart: " + item);
+        }
+    }
+</script>
 
-
+<?php if (isset($new_item)) : ?>
+<body onload="success_msg('<?= $new_item;?>')">
+<?php else : ?>
 <body>
+<?php endif; ?>
     <div id="container">
         <header>
-                <a href="">
-                    <div id="name">Beep&Geek</div>
-                </a>
-                <a href="checkout.php">
-                    <div id="login">Checkout</div>
-                </a>
-                <a href="checkout.php">
-                    <div id="cart">Cart</div>
-                </a>
+            <a href="">
+                <div id="name">Beep&Geek</div>
+            </a>
+            <a href="checkout.php">
+                <div id="login">Checkout</div>
+            </a>
+            <a href="checkout.php">
+                <div id="cart">Cart</div>
+            </a>
         </header>
 
         <div class="content">
@@ -130,30 +140,34 @@ mysqli_close($conn);
                             <?php endforeach; ?>
                         </table>
                     </div>
-                    <?php if (isset($new_item)) : ?>
-                        <script type="text/javascript"> alert("<?php echo $new_item ?> added to cart")</script>;
-                        <!--<p>Successfully added to cart: <?= $new_item ?></p>-->
-                    <?php endif ?>
-                    <?php if (!empty($_SESSION['cart'])) : ?>
-                        <!--<div id="checkout1"><a href=checkout.php>
-                                <p>Go to cart</p>
-                            </a></div>-->
-                    <?php endif ?>
                     <div class="techspecs">
-                    <div id="linespace"></div>
-                    <h2><strong>Tech Specs:</strong></h2>
-                    <p><ul>
-                        <li><h3>Size: </h3><?= $row['Size'] ?></li>
-                        <li><h3>Weight:</h3><?= $row['Weight'] ?></li>
-                        <li><h3>Display:</h3><?= $row['Display'] ?></li>
-                        <li><h3>Chip:</h3><?= $row['Chip'] ?></li>
-                        <li><h3>Battery:</h3><?= $row['Battery'] ?></li>
-                    </ul></p>
+                        <div id="linespace"></div>
+                        <h2><strong>Tech Specs:</strong></h2>
+                        <p>
+                        <ul>
+                            <li>
+                                <h3>Size: </h3><?= $row['Size'] ?>
+                            </li>
+                            <li>
+                                <h3>Weight:</h3><?= $row['Weight'] ?>
+                            </li>
+                            <li>
+                                <h3>Display:</h3><?= $row['Display'] ?>
+                            </li>
+                            <li>
+                                <h3>Chip:</h3><?= $row['Chip'] ?>
+                            </li>
+                            <li>
+                                <h3>Battery:</h3><?= $row['Battery'] ?>
+                            </li>
+                        </ul>
+                        </p>
                     </div>
                 </div>
                 <script type="text/javascript" src="promaxslideshow.js"></script>
             </div>
         </div>
     </div>
-</body>
+    </body>
+
 </html>
