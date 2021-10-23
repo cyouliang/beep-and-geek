@@ -65,21 +65,21 @@ mysqli_close($conn);
                 </a>
         </header>
 
+        <div id="topnavbar">
+            <nav>
+                <b>
+                    <a href="index3.html">Home</a>
+                    <a href="catalogue.php">All</a>
+                    <a href="catalogue.php?browseby=phone">iPhones</a>
+                    <a href="catalogue.php?browseby=laptop">Mac</a>
+                    <a href="catalogue.php?browseby=earphone">Airpods</a>
+                </b>
+            </nav>
+        </div>
         <div class="content">
             <!--<header>
                 <a href="index3.html"><img src="img/logo-blue.png" alt="Go back to maincatalog" style="width:20%"></a>
             </header> -->
-            <div id="topnavbar">
-                <nav>
-                    <b>
-                        <a href="index3.html">Home</a>
-                        <a href="catalogue.php">All</a>
-                        <a href="catalogue.php?browseby=phone">iPhones</a>
-                        <a href="catalogue.php?browseby=laptop">Mac</a>
-                        <a href="catalogue.php?browseby=earphone">Airpods</a>
-                    </b>
-                </nav>
-            </div>
 
             <div id="pagelayout">
                 <div id="rightcolumn_2">

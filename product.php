@@ -72,18 +72,18 @@ mysqli_close($conn);
             </a>
         </header>
 
+        <div id="topnavbar">
+            <nav>
+                <b>
+                    <a href="index3.html">Home</a>
+                    <a href="catalogue.php">All</a>
+                    <a href="catalogue.php?browseby=phone">iPhones</a>
+                    <a href="catalogue.php?browseby=laptop">Mac</a>
+                    <a href="catalogue.php?browseby=earphone">Airpods</a>
+                </b>
+            </nav>
+        </div>
         <div class="content">
-            <div id="topnavbar">
-                <nav>
-                    <b>
-                        <a href="index3.html">Home</a>
-                        <a href="catalogue.php">All</a>
-                        <a href="catalogue.php?browseby=phone">iPhones</a>
-                        <a href="catalogue.php?browseby=laptop">Mac</a>
-                        <a href="catalogue.php?browseby=earphone">Airpods</a>
-                    </b>
-                </nav>
-            </div>
 
             <div id="pagelayout">
                 <div id="rightcolumn_2">
