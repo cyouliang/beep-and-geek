@@ -54,32 +54,32 @@ mysqli_close($conn);
 <body>
     <div id="container">
         <header>
-                <a href="">
+                <a href="index.html">
                     <div id="name">Beep&Geek</div>
                 </a>
-                <a href="checkout.php">
-                    <div id="login">Checkout</div>
+                <a href="loginpage.php">
+                    <div id="login">Login</div>
                 </a>
                 <a href="checkout.php">
                     <div id="cart">Cart</div>
                 </a>
         </header>
 
+        <div id="topnavbar">
+            <nav>
+                <b>
+                    <a href="index3.html">Home</a>
+                    <a href="catalogue.php">All</a>
+                    <a href="catalogue.php?browseby=phone">iPhones</a>
+                    <a href="catalogue.php?browseby=laptop">Mac</a>
+                    <a href="catalogue.php?browseby=earphone">Airpods</a>
+                </b>
+            </nav>
+        </div>
         <div class="content">
             <!--<header>
                 <a href="index3.html"><img src="img/logo-blue.png" alt="Go back to maincatalog" style="width:20%"></a>
             </header> -->
-            <div id="topnavbar">
-                <nav>
-                    <b>
-                        <a href="index3.html">Home</a>
-                        <a href="catalogue.php">All</a>
-                        <a href="catalogue.php?browseby=phone">iPhones</a>
-                        <a href="catalogue.php?browseby=laptop">Mac</a>
-                        <a href="catalogue.php?browseby=earphone">Airpods</a>
-                    </b>
-                </nav>
-            </div>
 
             <div id="pagelayout">
                 <div id="rightcolumn_2">
