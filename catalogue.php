@@ -70,7 +70,7 @@ mysqli_close($conn);
 <body>
     <div id="container">
         <header>
-            <a href="index3.html">
+            <a href="index3.php">
                 <div id="name">Beep&Geek</div>
             </a>
             <a href="loginpage.php">
@@ -90,7 +90,7 @@ mysqli_close($conn);
         <div id="topnavbar">
             <nav>
                 <b>
-                    <a href="index3.html">Home</a>
+                    <a href="index3.php">Home</a>
                     <a href="catalogue.php">All</a>
                     <a href="catalogue.php?browseby=phone">iPhones</a>
                     <a href="catalogue.php?browseby=laptop">Mac</a>
@@ -99,10 +99,6 @@ mysqli_close($conn);
             </nav>
         </div>
         <div class="content">
-            <!--<header>
-                <a href="index3.html"><img src="img/logo-blue.png" alt="Go back to maincatalog" style="width:20%"></a>
-            </header> -->
-
             <div id="pagelayout">
                 <div id="rightcolumn_2">
                     <table border="0" id="product-table">

@@ -62,7 +62,7 @@ if(isset($_POST['submit']))
 <body>
 <div id="container">
     <header>
-        <a href="index3.html">
+        <a href="index3.php">
             <div id="name">Beep&Geek</div>
         </a>
         <a href="loginpage.php">
@@ -75,7 +75,7 @@ if(isset($_POST['submit']))
     <div id="topnavbar">
             <nav>
                 <b>
-                    <a href="index3.html">Home</a>
+                    <a href="index3.php">Home</a>
                     <a href="catalogue.php">All</a>
                     <a href="catalogue.php?browseby=phone">iPhones</a>
                     <a href="catalogue.php?browseby=laptop">Mac</a>
