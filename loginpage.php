@@ -1,3 +1,10 @@
+<?php
+session_start();
+$login_fail = $_SESSION['recent_action'] == 'login_fail';
+echo($login_fail);
+unset($_SESSION['recent_action']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +14,13 @@
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
     <title>B&G-Registration</title>
+    <script type="text/javascript" src="script/messages.js"></script>
+    <?php if ($login_fail): ?>
+    <script type="text/javascript">
+        window.onload = setTimeout(loginFailMsg,100);   //No idea why onload itself doesn't work on chrome, so I added some delay
+    </script>
+    <?php endif; ?>
+
 </head>
 <body>
     <div id="container">
@@ -38,7 +52,7 @@
             <div id="rightcolumn_2">
                 <div id="registration">
                     <br /><br /><div><h2>Beep & Geek's Member Login</h2></div>
-                    <form action="authenticate.php" method="POST">
+                    <form action="script/authenticate.php" method="POST">
                             Username:<br />
                             <input type="text" name="username"><br /><br />
                             Password:<br />

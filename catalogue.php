@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_SESSION['valid_user']);
 // Initialise cart
 if (empty($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
@@ -10,6 +9,15 @@ if (isset($_GET['buy'])) {
     header('location: ' . $_SERVER['PHP_SELF']);
     exit();
 }
+
+//Check login
+$register_success = $_SESSION['recent_action'] == "register_success";
+$login_success = $_SESSION['recent_action'] == 'login_success';
+unset($_SESSION['recent_action']);
+if (isset($_SESSION['valid_user']))
+    $user = $_SESSION['valid_user'];
+else
+    $user = null;
 
 //Queries database for product information and image
 include "script/connectDB.php";
@@ -42,7 +50,7 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
     <title>B&G - Catalogue</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -50,20 +58,33 @@ mysqli_close($conn);
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
+<script type="text/javascript" src="script/messages.js"> </script>
+<script type="text/javascript">
+    <?php if ($login_success) : ?>
+        window.onload = setTimeout(() => loginSucMsg("<?= $user ?>"), 100);
+    <?php elseif ($register_success) : ?>
+        window.onload = setTimeout(() => registerSucMsg("<?= $user ?>"), 100);
+    <?php endif; ?>
+</script>
 
 <body>
     <div id="container">
         <header>
-                <a href="index3.html">
-                    <div id="name">Beep&Geek</div>
-                </a>
-
-                <a href="loginpage.html">
-                    <div id="login">Login</div>
-                </a>
-                <a href="checkout.php">
-                    <div id="cart">Cart</div>
-                </a>
+            <a href="index3.html">
+                <div id="name">Beep&Geek</div>
+            </a>
+            <a href="loginpage.php">
+                <div id="login">
+                    <?php if (isset($_SESSION['valid_user'])) : ?>
+                        <?= $_SESSION['valid_user'] ?>
+                    <?php else : ?>
+                        Login
+                    <?php endif; ?>
+                </div>
+            </a>
+            <a href="checkout.php">
+                <div id="cart">Cart</div>
+            </a>
         </header>
 
         <div id="topnavbar">

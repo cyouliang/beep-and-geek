@@ -45,27 +45,28 @@ mysqli_close($conn);
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
     <title>B&G - <?= $product ?></title>
+    <script type="text/javascript" src="script/messages.js"> </script>
+    <?php if (isset($new_item)) : ?>
+        <script type="text/javascript">
+            window.onload = setTimeout(() => addCartSucMsg("<?= $new_item ?>"), 100);
+        </script>
+    <?php endif; ?>
 </head>
-<script>
-    function success_msg(item) {
-        if (item) {
-            alert("Successfully added to cart: " + item);
-        }
-    }
-</script>
 
-<?php if (isset($new_item)) : ?>
-<body onload="success_msg('<?= $new_item;?>')">
-<?php else : ?>
 <body>
-<?php endif; ?>
     <div id="container">
         <header>
             <a href="index3.html">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="loginpage.html">
-                <div id="login">Login</div>
+            <a href="loginpage.php">
+                <div id="login">
+                    <?php if (isset($_SESSION['valid_user'])) : ?>
+                        <?= $_SESSION['valid_user'] ?>
+                    <?php else : ?>
+                        Login
+                    <?php endif; ?>
+                </div>
             </a>
             <a href="checkout.php">
                 <div id="cart">Cart</div>
@@ -168,6 +169,6 @@ mysqli_close($conn);
             </div>
         </div>
     </div>
-    </body>
+</body>
 
 </html>
