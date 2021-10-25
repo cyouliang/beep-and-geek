@@ -34,23 +34,24 @@ if(isset($_POST['submit']))
             VALUES ('$username','$password','$name','$address','$phone','$email')";
 
     // echo "<br>" . $sql. "<br>";
-    $result = mysqli_query ($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-    if(!$result)
+    if (!$result)
         echo "Your query failed";
-    else{
+    else {
         session_start();
-        $_SESSION['valid_user']=$username;
+        $_SESSION['valid_user'] = $username;
         $_SESSION['recent_action'] = 'register_success';
         header('Location: catalogue.php');
     }
-        // echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
-        // echo 'window.location.href = "loginpage.html";';
-        // echo '</script>';
+    // echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
+    // echo 'window.location.href = "loginpage.html";';
+    // echo '</script>';
 }
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -58,21 +59,51 @@ if(isset($_POST['submit']))
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
     <title>B&G-Registration</title>
+    <script type="text/javascript" src="script/validate.js"></script>
+    <script type="text/javascript">
+        function validate() {
+            let formData = new FormData(document.querySelector('form'));
+            let form = new Object;
+            form.username = formData.get('username');
+            form.password1 = formData.get('password');
+            form.password2 = formData.get('password2');
+            form.name = formData.get('name');
+            form.phone = formData.get('phone');
+            form.email = formData.get('email');
+            form.address = formData.get('address');
+            error = validateForm(form); //validates name, phone, email, and address
+            if (error) {
+                alert(error);
+                return false;
+            }
+            if (!validateUsername(form.username)) {
+                alert('Username too long');
+                return false;
+            }
+            if (!validatePassword(form.password1, form.password2)) {
+                alert('Password doesn\'t match');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
+
 <body>
-<div id="container">
-    <header>
-        <a href="index3.php">
-            <div id="name">Beep&Geek</div>
-        </a>
-        <a href="loginpage.php">
-            <div id="login">Login</div>
-        </a>
-        <a href="checkout.php">
-            <div id="cart">Cart</div>
-        </a>
-    </header>
-    <div id="topnavbar">
+    <div id="container">
+        <header>
+            <a href="index3.php">
+                <div id="name">Beep&Geek</div>
+            </a>
+            <a href="loginpage.php">
+                <div id="login">Login</div>
+            </a>
+            <a href="checkout.php">
+                <div id="cart">Cart</div>
+            </a>
+        </header>
+        <div id="topnavbar">
             <nav>
                 <b>
                     <a href="index3.php">Home</a>
@@ -82,38 +113,41 @@ if(isset($_POST['submit']))
                     <a href="catalogue.php?browseby=earphone">Airpods</a>
                 </b>
             </nav>
-    </div>
-    <div class="content">
-        <div id="pagelayout">
-            <div id="rightcolumn_2">
-                <div id="registration">
-                    <form action="" method="POST">
-                        <br /><br /><div><h2>Beep & Geek's Member Registration</h2>
-                        Username:<br />
-                        <input type="text" name="username"><br /><br />
-                        Password:<br />
-                        <input type="password" name="password"><br /><br />
-                        Password Confirmation:<br />
-                        <input type="password" name="password2"><br /><br />
-                        Name:<br />
-                        <input type="text" name="name"><br /><br />
-                        Address:<br />
-                        <input type="text" name="address"><br /><br />
-                        Phone:<br />
-                        <input type="text" name="phone"><br /><br />
-                        Email:<br />
-                        <input type="text" name="email"><br /><br />
+        </div>
+        <div class="content">
+            <div id="pagelayout">
+                <div id="rightcolumn_2">
+                    <div id="registration">
+                        <form action="" method="POST" onsubmit="return validate();">
+                            <br /><br />
+                            <div>
+                                <h2>Beep & Geek's Member Registration</h2>
+                                Username:<br />
+                                <input type="text" name="username" required><br /><br />
+                                Password:<br />
+                                <input type="password" name="password" required><br /><br />
+                                Password Confirmation:<br />
+                                <input type="password" name="password2" required><br /><br />
+                                Name:<br />
+                                <input type="text" name="name" required><br /><br />
+                                Address:<br />
+                                <input type="text" name="address" required><br /><br />
+                                Phone:<br />
+                                <input type="text" name="phone" required><br /><br />
+                                Email:<br />
+                                <input type="text" name="email" required><br /><br />
 
-                        <input type="submit" name="submit" value="Submit">
-                        <input type="reset" name="reset" value="Reset">
-                        </div>
-                    </form>
+                                <input type="submit" name="submit" value="Submit">
+                                <input type="reset" name="reset" value="Reset">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
         </div>
     </div>
-</div>
+    </div>
 </body>
+
 </html>
