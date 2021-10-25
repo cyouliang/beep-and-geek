@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 
     $password = md5($password);
     //echo $password;
-    $sql = "INSERT INTO Customers (Username, Password, Name, Address, Phone, Email)
+    $sql = "INSERT INTO Customers (Username, HashedPW, Name, Address, Phone, Email)
             VALUES ('$username','$password','$name','$address','$phone','$email')";
 
     // echo "<br>" . $sql. "<br>";
@@ -38,10 +38,15 @@ if(isset($_POST['submit']))
 
     if(!$result)
         echo "Your query failed";
-    else
-        echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
-        echo 'window.location.href = "loginpage.php";';
-        echo '</script>';
+    else{
+        session_start();
+        $_SESSION['valid_user']=$username;
+        $_SESSION['recent_action'] = 'register_success';
+        header('Location: catalogue.php');
+    }
+        // echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
+        // echo 'window.location.href = "loginpage.html";';
+        // echo '</script>';
 }
 ?>
 
@@ -57,28 +62,28 @@ if(isset($_POST['submit']))
 <body>
 <div id="container">
     <header>
-        <a href="index3.html">
+        <a href="index3.php">
             <div id="name">Beep&Geek</div>
         </a>
-        <a href="loginpage.html">
+        <a href="loginpage.php">
             <div id="login">Login</div>
         </a>
         <a href="checkout.php">
             <div id="cart">Cart</div>
         </a>
     </header>
+    <div id="topnavbar">
+            <nav>
+                <b>
+                    <a href="index3.php">Home</a>
+                    <a href="catalogue.php">All</a>
+                    <a href="catalogue.php?browseby=phone">iPhones</a>
+                    <a href="catalogue.php?browseby=laptop">Mac</a>
+                    <a href="catalogue.php?browseby=earphone">Airpods</a>
+                </b>
+            </nav>
+    </div>
     <div class="content">
-        <div id="topnavbar">
-                <nav>
-                    <b>
-                        <a href="index3.html">Home</a>
-                        <a href="catalogue.php">All</a>
-                        <a href="catalogue.php?browseby=phone">iPhones</a>
-                        <a href="catalogue.php?browseby=laptop">Mac</a>
-                        <a href="catalogue.php?browseby=earphone">Airpods</a>
-                    </b>
-                </nav>
-        </div>
         <div id="pagelayout">
             <div id="rightcolumn_2">
                 <div id="registration">

@@ -13,17 +13,30 @@ foreach ($products as $product) {
     }
 }
 
-// Insert customer
-$name = $_POST['cust_name'];
-$address = $_POST['cust_address'];
-$phone = $_POST['cust_phone'];
-$email = $_POST['cust_email'];
-$add_cust = "INSERT INTO Customers VALUES
-(NULL, '$name', '$address', '$phone', '$email')";
-mysqli_query($conn, $add_cust);
+if (empty($_SESSION['valid_user'])){
+    // Insert customer
+    $name = $_POST['cust_name'];
+    $address = $_POST['cust_address'];
+    $phone = $_POST['cust_phone'];
+    $email = $_POST['cust_email'];
+    $add_cust = "INSERT INTO Customers (Name, Address, Phone, Email) VALUES 
+    ('$name', '$address', '$phone', '$email')";
+    mysqli_query($conn, $add_cust);
+    $customerid = mysqli_insert_id($conn); // Previous auto increment is customer id
+} 
+elseif (isset($_SESSION['user'])) {
+    // Get customer details
+    $query = 'SELECT * FROM Customers '. 'WHERE Username="'.$_SESSION['valid_user'].'"';
+    $result = mysqli_query($conn, $query);
+    $user = mysqli_fetch_assoc($result);
+    $name = $_SESSION['user']['Name'];
+    $address = $_SESSION['user']['Address'];
+    $phone = $_SESSION['user']['Phone'];
+    $email = $_SESSION['user']['Email'];
+    $customerid = $_SESSION['user']['CustomerID'];
+}
 
 // Insert transaction
-$customerid = mysqli_insert_id($conn); // Previous auto increment is customer id
 $amount = total_price($products);
 $add_transaction = "INSERT INTO Orders VALUES
 (NULL, $customerid, $amount, NULL)";

@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +16,14 @@
             <a href="">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="loginpage.html">
-                <div id="login">Login</div>
+            <a href="loginpage.php">
+                <div id="login">
+                    <?php if (isset($_SESSION['valid_user'])) : ?>
+                        <?= $_SESSION['valid_user'] ?>
+                    <?php else : ?>
+                        Login
+                    <?php endif; ?>
+                </div>
             </a>
             <a href="checkout.php">
                 <div id="cart">Cart</div>
