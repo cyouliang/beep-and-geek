@@ -17,7 +17,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
-    <script type="text/javascript" src="validate.js"></script>
+    <script type="text/javascript" src="script/validate.js"></script>
+    <script type="text/javascript">
+        function validate(){
+            let formData = new FormData(document.querySelector('form'));
+            let form = new Object;
+            form.name = formData.get('cust_name');
+            form.phone = formData.get('cust_phone');
+            form.email = formData.get('cust_email');
+            form.address = formData.get('cust_address');
+            error = validateForm(form);
+            if (!error) {
+                return true;
+            } else {
+                alert(error);
+                return false;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -54,7 +72,7 @@
         <div class="content">
             <div id="pagelayout">
                 <div id="rightcolumn_2">
-                    <form action="script/create_transaction.php" method="post" onsubmit="return validate()">
+                    <form action="script/create_transaction.php" method="post" onsubmit="return validate();">
                         <label>Name: <input type="text" name="cust_name" placeholder="Name" required></label><br>
                         <label>Phone: <input type="text" name="cust_phone" placeholder="Phone number" required></label><br>
                         <label>Email: <input type="text" name="cust_email" placeholder="Email" required></label><br>

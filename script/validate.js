@@ -18,7 +18,8 @@ function validateEmail(email) {
 
 function validatePhone(phone) {
     // Phone number is positive integer with less than 20 digits
-    if (phone.toString().length < 20 && Number.isInteger(phone) && phone > 0) {
+    number = Number(phone); //convert input string to integer
+    if (phone.length < 20 && Number.isInteger(number) && number > 0) {
         return true;
     }
     return false;
@@ -35,12 +36,12 @@ function validateAddress(address) {
 
 function validatePassword(pass1, pass2) {
     // Passwords should match
-    return pass1 === pass2;
+    return pass1 === pass2 && pass1.length>0;
 }
 
 function validateUsername(username) {
     // Username less than 30 chars
-    return username.length <= 30;
+    return username.length <= 30 && username.length > 0;
 }
 
 function validateForm(form) {
