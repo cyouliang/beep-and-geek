@@ -24,15 +24,21 @@ unset($_SESSION['transaction']);
             <a href="index3.php">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="loginpage.php">
-                <div id="login">
-                    <?php if (isset($_SESSION['valid_user'])) : ?>
-                        <?= $_SESSION['valid_user'] ?>
-                    <?php else : ?>
-                        Login
-                    <?php endif; ?>
+
+            <div id="login">
+                <?php if (isset($_SESSION['valid_user'])) : ?>
+                <div class="dropdown">
+                    <?= $_SESSION['valid_user'] ?>
+                    <div class="dropdown-content">
+                        <a href="myinfo.php">My Info</a>
+                        <a href="logout.php">Logout</a>
+                    </div>
                 </div>
-            </a>
+                <?php else : ?>
+                    <a href="loginpage.php">Login</a>
+                <?php endif; ?>
+            </div>
+
             <a href="checkout.php">
                 <div id="cart">Cart</div>
             </a>

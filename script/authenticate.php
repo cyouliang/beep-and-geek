@@ -10,7 +10,6 @@ if (isset($_POST['submit']))
 
     $password = md5($password);
 
-    //$sql = 'SELECT * from Customers WHERE Username = '.$username.' AND Password = '.$password.'';
     $query = 'SELECT * FROM Customers '. "WHERE Username='$username'" ." AND HashedPW = '$password'";
     $result = mysqli_query($conn, $query);
     if($result -> num_rows >0)
