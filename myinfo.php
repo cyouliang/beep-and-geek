@@ -3,6 +3,11 @@
 include "script/connectDB.php";
 session_start();
 $userid = $_SESSION['valid_user'];
+if (empty($userid)) {
+    // echo '<script type="text/javascript"> alert("User is not logged in");</script>';
+    header('Location: index3.php');
+    exit();
+}
 $query = "SELECT * FROM Customers WHERE Username = '".$userid."' ";
 //"SELECT user_name FROM users WHERE user_name = '".$user_name."'";
 $result = mysqli_query($conn, $query);
