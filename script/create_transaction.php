@@ -24,16 +24,16 @@ if (empty($_SESSION['valid_user'])){
     mysqli_query($conn, $add_cust);
     $customerid = mysqli_insert_id($conn); // Previous auto increment is customer id
 } 
-elseif (isset($_SESSION['user'])) {
+elseif (isset($_SESSION['valid_user'])) {
     // Get customer details
     $query = 'SELECT * FROM Customers '. 'WHERE Username="'.$_SESSION['valid_user'].'"';
     $result = mysqli_query($conn, $query);
     $user = mysqli_fetch_assoc($result);
-    $name = $_SESSION['user']['Name'];
-    $address = $_SESSION['user']['Address'];
-    $phone = $_SESSION['user']['Phone'];
-    $email = $_SESSION['user']['Email'];
-    $customerid = $_SESSION['user']['CustomerID'];
+    $name = $user['Name'];
+    $address = $user['Address'];
+    $phone = $user['Phone'];
+    $email = $user['Email'];
+    $customerid = $user['CustomerID'];
 }
 
 // Insert transaction
