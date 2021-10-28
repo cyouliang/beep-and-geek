@@ -4,23 +4,21 @@ session_start();
 $old_user = $_SESSION['valid_user'];
 unset($_SESSION['valid_user']);
 session_destroy();
-
 ?>
 
 <html>
 <body>
-<h1> Log out page </h1>
+<h1> Log out </h1>
 <?php
-    if (!empty($old_user))
+    if(!empty($old_user))
     {
-        echo 'Logged out. <br />';
+        if(isset($_SERVER['HTTP_REFERER']))
+        {
+            header('Location: '.$_SERVER['HTTP_REFERER']);
+        }
+        else
+            header('Location: index3.php');
     }
-    else
-    {
-        echo 'You were not logged out. <br />';
-    }
-
 ?>
-<a href="loginpage.php"> Back to login page </a>
 </body>
 </html>

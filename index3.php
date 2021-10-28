@@ -16,15 +16,19 @@
             <a href="">
                 <div id="name">Beep&Geek</div>
             </a>
-            <a href="loginpage.php">
                 <div id="login">
                     <?php if (isset($_SESSION['valid_user'])) : ?>
+                    <div class="dropdown">
                         <?= $_SESSION['valid_user'] ?>
+                        <div class="dropdown-content">
+                            <a href="myinfo.php">My Info</a>
+                            <a href="logout.php">Logout</a>
+                        </div>
+                    </div>
                     <?php else : ?>
-                        Login
+                        <a href="loginpage.php">Login</a>
                     <?php endif; ?>
                 </div>
-            </a>
             <a href="checkout.php">
                 <div id="cart">Cart</div>
             </a>
