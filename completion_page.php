@@ -1,8 +1,24 @@
 <?php
 session_start();
 require_once 'script/functions.php';
+if ($_SESSION['recent_action'] != 'completed_transaction') {
+    die('No transaction to display');
+}
+unset($_SESSION['recent_action']);
+
 $transaction = $_SESSION['transaction'];
 unset($_SESSION['transaction']);
+
+
+$to      = 'f32ee@localhost';
+$subject = '[Beep and Geek] Thank you for your purchase!'; //Change this
+$message = 'We have received your purchase totaling $'.number_format(total_price($transaction['products']),2)
+            ."\r\nYour transcation id is: ".$transaction['orderid']."\r\nThank you for shopping with us!"; //Change this
+$headers = 'From: f32ee@localhost' . "\r\n" .
+    'Reply-To: f32ee@localhost' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers,'-ff32ee@localhost');
 ?>
 
 <!DOCTYPE html>
@@ -78,11 +94,11 @@ unset($_SESSION['transaction']);
                                 <td align="left"><?= $product['Color']; ?></td>
                                 <td align="center"><?= $product['Price']; ?></td>
                                 <td align="center"><?= $product['Quantity']; ?></td>
-                                <td align="center">$<?= number_format($product['Price'] * $product['Quantity']); ?></td>
+                                <td align="center">$<?= number_format($product['Price'] * $product['Quantity'], 2); ?></td>
                             </tr>
                         <?php endforeach; ?>
                         <tr>
-                            <th id="total-price" align="right" colspan="6">Total: $<?= number_format(total_price($transaction['products'])) ?></th>
+                            <th id="total-price" align="right" colspan="6">Total: $<?= number_format(total_price($transaction['products']),2) ?></th>
                         </tr>
                     </table>
                     <p>A copy of the receipt has been sent to your email at <b><?= $transaction['cust_email'] ?></b>
