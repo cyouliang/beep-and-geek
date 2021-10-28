@@ -14,7 +14,6 @@ $result = mysqli_query($conn, $query);
 if($result -> num_rows >0)
 {
     $row = mysqli_fetch_array($result);
-    var_dump($row);
     $rows[] = $row;
 }
 ?>

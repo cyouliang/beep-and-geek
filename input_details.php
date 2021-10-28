@@ -17,6 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="css/form.css">
     <script type="text/javascript" src="script/validate.js"></script>
     <script type="text/javascript">
         function validate(){
@@ -72,14 +73,22 @@
         <div class="content">
             <div id="pagelayout">
                 <div id="rightcolumn_2">
-                    <form action="script/create_transaction.php" method="post" onsubmit="return validate();">
-                        <label>Name: <input type="text" name="cust_name" placeholder="Name" required></label><br>
-                        <label>Phone: <input type="text" name="cust_phone" placeholder="Phone number" required></label><br>
-                        <label>Email: <input type="text" name="cust_email" placeholder="Email" required></label><br>
-                        <label>Address: <textarea name="cust_address" rows="4" cols="40" placeholder="Delivery address" required></textarea></label><br>
-                        <input type="reset" value="Oops">
-                        <input type="submit" value="Order now!">
-                    </form>
+                    <div class="inputform">
+                        <h2>Customer details</h2>
+                        <p>Enter particulars to continue</p>
+                        <form action="script/create_transaction.php" method="post" onsubmit="return validate();">
+                            <label class="form-label" for="cust_name">Name <br></label>
+                                <input type="text" name="cust_name" placeholder="Name" required><br>
+                            <label class="form-label" for="cust_phone">Phone <br></label>
+                                <input type="text" name="cust_phone" placeholder="Phone number" required><br>
+                            <label class="form-label" for="cust_email">Email <br></label>
+                                <input type="text" name="cust_email" placeholder="Email" required><br>
+                            <label class="form-label" for="cust_address">Address <br></label>
+                                <textarea name="cust_address" placeholder="Delivery address" required></textarea><br>
+                            <input type="reset" value="Clear" class="button">
+                            <input type="submit" value="Order now!" class="button">
+                        </form>
+                    </div>
                 </div>
 
             </div>

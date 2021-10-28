@@ -42,7 +42,7 @@ if(isset($_POST['submit']))
         session_start();
         $_SESSION['valid_user'] = $username;
         $_SESSION['recent_action'] = 'register_success';
-        header('Location: catalogue.php');
+        header('Location catalogue.php');
     }
     // echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
     // echo 'window.location.href = "loginpage.html";';
@@ -58,6 +58,7 @@ if(isset($_POST['submit']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>B&G-Registration</title>
     <script type="text/javascript" src="script/validate.js"></script>
     <script type="text/javascript">
@@ -117,29 +118,26 @@ if(isset($_POST['submit']))
         <div class="content">
             <div id="pagelayout">
                 <div id="rightcolumn_2">
-                    <div id="registration">
+                    <div class="inputform">
+                        <h2>Member Registration</h2>
+                        <p>Sign up now to become a member</p>
                         <form action="" method="POST" onsubmit="return validate();">
-                            <br /><br />
-                            <div>
-                                <h2>Beep & Geek's Member Registration</h2>
-                                Username:<br />
-                                <input type="text" name="username" required><br /><br />
-                                Password:<br />
-                                <input type="password" name="password" required><br /><br />
-                                Password Confirmation:<br />
-                                <input type="password" name="password2" required><br /><br />
-                                Name:<br />
-                                <input type="text" name="name" required><br /><br />
-                                Address:<br />
-                                <input type="text" name="address" required><br /><br />
-                                Phone:<br />
-                                <input type="text" name="phone" required><br /><br />
-                                Email:<br />
-                                <input type="text" name="email" required><br /><br />
-
-                                <input type="submit" name="submit" value="Submit">
-                                <input type="reset" name="reset" value="Reset">
-                            </div>
+                            <label class="form-label" for="">Username</label>
+                            <input type="text" name="username" placeholder="Username" required>
+                            <label class="form-label" for="">Password</label>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <label class="form-label" for="">Confirm Password</label>
+                            <input type="password" name="password2" placeholder="Confirm password" required>
+                            <label class="form-label" for="">Name</label>
+                            <input type="text" name="name" placeholder="Name" required>
+                            <label class="form-label" for="">Phone</label>
+                            <input type="text" name="phone" placeholder="Phone number" required>
+                            <label class="form-label" for="">Email</label>
+                            <input type="text" name="email" placeholder="Email" required>
+                            <label class="form-label" for="">Address</label>
+                            <textarea type="text" name="address" placeholder="Address" required></textarea>
+                            <input type="reset" name="reset" value="Reset" class="button">
+                            <input type="submit" name="submit" value="Submit" class="button">
                         </form>
                     </div>
                 </div>
