@@ -110,7 +110,7 @@ if(isset($_POST['submit']))
                     <a href="index3.php">Home</a>
                     <a href="catalogue.php">All</a>
                     <a href="catalogue.php?browseby=phone">iPhones</a>
-                    <a href="catalogue.php?browseby=laptop">Mac</a>
+                    <a href="catalogue.php?browseby=laptop">Macbook</a>
                     <a href="catalogue.php?browseby=earphone">Airpods</a>
                 </b>
             </nav>
