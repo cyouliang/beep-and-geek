@@ -102,6 +102,7 @@ mysqli_close($conn);
 
                         <?php foreach ($rows as $row) : ?>
                             <div class="mySlides fade">
+                                <!-- <div class="numbertext"> <?= $row['ProductID'] . ' / ' . $rowcount ?></div> -->
                                 <img src="img/products/<?= $row['VariantImage'] ?>" style="width:100%">
                                 <div class="text"><strong><?= $row['ProductName'] ?><br><?= $row['Color'] ?><br> $<?= $row['Price'] ?></strong></div>
                             </div>
