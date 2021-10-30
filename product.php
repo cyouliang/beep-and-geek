@@ -14,7 +14,7 @@ if (isset($_GET['buy'])) {
     $_SESSION['cart'][] = $_GET['buy'];
     $_SESSION['recent_action'] = 'add_cart';
     $_SESSION['newly_added'] = $_GET['product_added'];
-    header('location: ' . $_SERVER['PHP_SELF'] . '?product=' . $_GET['product'] . '#product-table');
+    header('location: ' . $_SERVER['PHP_SELF'] . '?product=' . $_GET['product']);
     exit();
 }
 // print_r($_SESSION['cart']);
@@ -44,6 +44,7 @@ mysqli_close($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="css/table.css">
     <title>B&G - <?= $product ?></title>
     <script type="text/javascript" src="script/messages.js"> </script>
     <?php if (isset($new_item)) : ?>
@@ -121,7 +122,7 @@ mysqli_close($conn);
                         </div>
                     </div>
                     <div id="product-table1">
-                        <table border="1">
+                        <table class="product-table">
                             <tr>
                                 <th>Product Name</th>
                                 <th>Color</th>

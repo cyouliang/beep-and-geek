@@ -1,0 +1,70 @@
+#product-table1 {
+    margin: 0px;
+}
+
+.product-table {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 60%;
+}
+
+table {
+    border: none;
+    border-collapse: seperate;
+    border-spacing: 0em;
+}
+
+.product-table th {
+    background-color: rgba(243, 231, 99, 0.774);
+    color: black;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+.product-table td {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.product-table tr:hover {
+    background-color: rgba(61, 61, 56, 0.24);
+}
+
+.product-table tr:not(:first-child, :last-child) td{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.product-table tr:first-child th{
+    border-top: 1px solid rgba(243, 231, 99, 0.774);
+}
+
+.product-table tr:last-child td{
+    border-bottom: 1px solid rgba(243, 231, 99, 0.774);
+}
+
+.product-table tr td:first-child{
+    border-left: 1px solid rgba(243, 231, 99, 0.774);
+}
+
+.product-table tr td:last-child{
+    border-right: 1px solid rgba(243, 231, 99, 0.774);
+}
+
+/* Round corners */
+.product-table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.product-table tr:first-child th:last-child{
+    border-top-right-radius: 10px;
+}
+
+.product-table tr:last-child td:first-child{
+    border-bottom-left-radius: 10px;
+}
+
+.product-table tr:last-child td:last-child{
+    border-bottom-right-radius: 10px;
+}
