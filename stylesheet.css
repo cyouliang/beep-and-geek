@@ -67,7 +67,7 @@ header {
     z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a, .dropdown-content a:visited, #login a:visited{
     color: grey;
     padding: 6px 8px;
     text-decoration: none;
