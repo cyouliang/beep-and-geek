@@ -34,7 +34,7 @@
             </a>
         </header>
         <div class="content">
-            <img src="img/logo-blue.png" alt="logo" id="banner">
+            <img src="img/logo-cyan1.png" alt="logo" id="banner">
             <div id="tagline">
                 <p>Your one stop solution for all things tech related </p>
             </div>
