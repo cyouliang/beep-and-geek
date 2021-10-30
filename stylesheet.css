@@ -409,3 +409,8 @@ img {
         opacity: 1
     }
 }
+
+.completion-details {
+    margin: auto;
+    max-width: 700px;
+}
