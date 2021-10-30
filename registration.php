@@ -42,7 +42,7 @@ if(isset($_POST['submit']))
         session_start();
         $_SESSION['valid_user'] = $username;
         $_SESSION['recent_action'] = 'register_success';
-        header('Location catalogue.php');
+        header('Location: catalogue.php');
     }
     // echo ' <script type="text/javascript"> alert("Registration successful! Login now");';
     // echo 'window.location.href = "loginpage.html";';
