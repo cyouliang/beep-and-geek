@@ -65,6 +65,27 @@ mysqli_close($conn);
     <?php elseif ($register_success) : ?>
         window.onload = setTimeout(() => registerSucMsg("<?= $user ?>"), 100);
     <?php endif; ?>
+
+    function ActiveTab(number) {
+        var tabs = document.getElementsByClassName("tab");
+        tabs[number].classList.add("active_tab");
+    }
+    function setActiveTab(number) {
+        window.onload = () => ActiveTab(number);
+    }
+
+    <?php 
+    if ($category == 'phone') {
+        echo 'setActiveTab(1);';
+    } else if ($category == 'laptop') {
+        echo 'setActiveTab(2);';
+    } else if ($category == 'earphone') {
+        echo 'setActiveTab(3);';
+    } else {
+        echo 'setActiveTab(0);';
+    }
+    ?>
+
 </script>
 
 <body>
@@ -96,10 +117,10 @@ mysqli_close($conn);
             <nav>
                 <b>
                     <a href="index3.php">Home</a>
-                    <a href="catalogue.php">All</a>
-                    <a href="catalogue.php?browseby=phone">iPhones</a>
-                    <a href="catalogue.php?browseby=laptop">Macbook</a>
-                    <a href="catalogue.php?browseby=earphone">Airpods</a>
+                    <a href="catalogue.php" class="tab">All</a>
+                    <a href="catalogue.php?browseby=phone" class="tab">iPhones</a>
+                    <a href="catalogue.php?browseby=laptop" class="tab">Macbook</a>
+                    <a href="catalogue.php?browseby=earphone" class="tab">Airpods</a>
                 </b>
             </nav>
         </div>
