@@ -113,11 +113,15 @@ mysqli_close($conn);
                         while ($row = mysqli_fetch_array($result)) {
                             //TODO: Reduce spacing between each line
                             $divcontent = '
-                            <a href="product.php?product=' . $row['product'] . '">
-                            <img src="img/products/' . $row['image'] . '" alt = "' . $row['product'] . '" width = "400" class="product-image">
-                            <h3 class = "product-name">' . $row['product'] . '</h3> </a>
-                            <h4 class = "product-stock">Stock left: ' . $row['stock'] . '</h4>
-                            <h4 class = "product-price-range">$' . $row['min_price'] . ' - $' . $row['max_price'] . '</h4>';
+                                <a href="product.php?product=' . $row['product'] . '">
+                                <img src="img/products/' . $row['image'] . '" alt = "' . $row['product'] . '"class="product-image">
+                                <h3 class = "product-name">' . $row['product'] . '</h3> </a>
+                                <h4 class = "product-stock">Stock left: ' . $row['stock'] . '</h4>';
+                            if ($row['min_price'] == $row['max_price']) {
+                                $divcontent = $divcontent . '<h4 class = "product-price-range">$' . $row['min_price'] . '</h4>';
+                            } else {
+                                $divcontent = $divcontent . '<h4 class = "product-price-range">$' . $row['min_price'] . ' - $' . $row['max_price'] . '</h4>';
+                            }
 
                             if ($counter % 3 == 0) {
                                 echo '<tr> <td> <div class = "product" class = "left">';
