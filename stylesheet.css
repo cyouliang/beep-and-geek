@@ -3,9 +3,10 @@
 body,
 html {
     /*background-color: #FCEBBB;*/
-    font-family: Helvetica, Verdana, sans-serif;
     height: 100%;
     margin: 0;
+    font-family: ‘Open Sans’;
+    font-weight: 800;
 }
 
 header {
@@ -53,6 +54,10 @@ header {
     text-align: center;
 }
 
+#login:hover {
+    color: blue;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -61,21 +66,21 @@ header {
 .dropdown-content {
     display: none;
     position: fixed;
-    background-color: #f1f1f1;
+    background-color: aliceblue;
     min-width: 50px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-.dropdown-content a, .dropdown-content a:visited, #login a:visited{
-    color: grey;
+.dropdown-content a, .dropdown-content a:visited, #login{
+    color: 	#708090;
     padding: 6px 8px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown:hover {background-color: #ddd;}
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover {color: blue;}
+.dropdown-content a:hover {color: blue;}
 .dropdown:hover .dropdown-content {display: block;}
 
 #cart {
@@ -87,6 +92,10 @@ header {
     margin: 0 10px;
     padding: 5px;
     color: white;
+}
+
+#cart:hover {
+    color: blue;
 }
 
 #pagelayout {
@@ -101,44 +110,26 @@ header {
 #topnavbar {
     display: grid;
     grid-row: 2 / 3;
-    background-color: #555;
+    background-color: white;
 }
-
-
-/* #topnavbar {
-    width: 101.25%;
-    overflow: auto;
-    height: auto;
-    position: absolute;
-  } */
 
 #topnavbar a {
     float: left;
     padding: 12px;
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 17px;
     width: 20%;
     text-align: center;
+    font-size: 16px;
+    font-family: ‘Open Sans’;
+    font-weight: 600;
+    color: #202020;
 }
 
-#leftnavbar {
-    text-align: center;
-    width: 12%;
-    float: left;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: whitesmoke;
-    height: auto;
-    position: fixed;
-    border-style: inset;
-}
-
-#leftnavbar a {
-    text-decoration: none;
-    font-family: Helvetica, Verdana, sans-serif;
-    font-size: 1.2em;
-    display: block;
+#topnavbar nav a:hover {
+    color: blue;
+    background-color: aliceblue;
 }
 
 .rightcolumn .text {
@@ -184,12 +175,6 @@ header {
     color: #3a3a3a;
 }
 
-#promotionalbanner {
-    font-family: Helvetica, Verdana, sans-serif;
-    text-align: center;
-    color: red;
-}
-
 #buttonEnter {
     font-family: Helvetica, Verdana, sans-serif;
     text-align: center;
@@ -206,41 +191,6 @@ img {
 #iphonemaincatalog {
     width: 300px;
     height: 300px;
-}
-
-.homebanner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/2021.png");
-    height: 100%;
-    top: 9%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.homebanner-text {
-    text-align: center;
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-}
-
-.bannerprev,
-.bannernext {
-    cursor: pointer;
-    position: absolute;
-    top: 75%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: black;
-    font-weight: bold;
-    font-size: 50px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
 }
 
 .product-name,
@@ -277,6 +227,36 @@ img {
     margin-left: 20%;
 }
 
+#checkout{
+ float: right;
+ margin-top: 5px;
+ width: 15%;
+ height: 30px;
+ border: none;
+ background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+ border-radius: 20px;
+ cursor: pointer;
+ font-size: 16px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #202020;
+ }
+
+ #clear {
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+  width: 15%;
+  height: 30px;
+  border: none;
+  background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: ‘Open Sans’;
+  font-weight: 600;
+  color: #202020;
+ }
 
 /* Slideshow container */
 
