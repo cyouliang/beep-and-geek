@@ -55,9 +55,13 @@ header {
 
 #login {
     text-decoration: none;
-    color: grey;
     font-weight: bold;
     text-align: center;
+}
+
+#login a {
+    color: grey;
+
 }
 
 #cart {
