@@ -22,7 +22,7 @@ if (isset($_GET['buy'])) {
 // Get product info
 $product = $_GET['product'];
 include "script/connectDB.php";
-$query = "SELECT * FROM Products WHERE ProductName = '$product'";
+$query = "SELECT * FROM Products WHERE ProductName = '$product' ORDER BY Price";
 $result = mysqli_query($conn, $query);
 $rowcount = mysqli_num_rows($result);
 if ($rowcount == 0) die("Sorry this product does not exists");
@@ -104,7 +104,9 @@ mysqli_close($conn);
                             <div class="mySlides fade">
                                 <!-- <div class="numbertext"> <?= $row['ProductID'] . ' / ' . $rowcount ?></div> -->
                                 <img src="img/products/<?= $row['VariantImage'] ?>" style="width:100%">
-                                <div class="text"><strong><?= $row['ProductName'] ?><br><?= $row['Color'] ?><br> $<?= $row['Price'] ?></strong></div>
+                                <!-- <div class="text"><strong><span class="product-name"><?= $row['ProductName'] ?></span><br><?= $row['Color'] ?><br> $<?= $row['Price'] ?></strong></div> -->
+                                <div class="text"><strong><span class="product-name"><?= $row['ProductName'] ?></span><br><?= $row['Color'] ?><br> $<?= $row['Price'] ?></strong></div>
+
                             </div>
                         <?php endforeach; ?>
 

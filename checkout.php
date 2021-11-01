@@ -2,11 +2,14 @@
 session_start();
 include 'script/connectDB.php';
 require_once 'script/functions.php';
-$products = get_products_from_cart($conn, $_SESSION['cart'], false);
 
+if(isset($_GET['clear'])){
+    unset($_SESSION['cart']);
+}
+
+$products = get_products_from_cart($conn, $_SESSION['cart'], false);
 $total_price = total_price($products);
 $all_available = true; //Tracks if all items have enough stock
-
 mysqli_close($conn);
 
 ?>
@@ -22,6 +25,11 @@ mysqli_close($conn);
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
     <script type="text/javascript" src="script/validate.js"> </script>
+    <style>
+        #rightcolumn_2 {
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -116,12 +124,6 @@ mysqli_close($conn);
                             <form action="" method="GET">
                                 <input type="hidden" value="clear">
                                 <input type="submit" id="clear" name="clear" value="Clear Cart">
-                                <?php
-                                    if(isset($_GET['clear'])){
-                                        unset($_SESSION['cart']);
-                                        header("Location: checkout.php");
-                                    }
-                                ?>
                             </form>
                         <?php else : ?>
                             <p><b>*Sorry one or more items are not available</b></p>

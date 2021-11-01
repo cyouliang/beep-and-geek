@@ -27,10 +27,9 @@ unset($_SESSION['recent_action']);
         <header>
             <a href="index3.php">
                 <div id="name">Beep&Geek</div>
-            </a>
-            <a href="loginpage.php">
-                <div id="login">Login</div>
-            </a>
+            <div id="login">
+                <a href="loginpage.php">Login</a>
+            </div>
             <a href="checkout.php">
                 <div id="cart">Cart</div>
             </a>
