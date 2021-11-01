@@ -22,6 +22,11 @@ mysqli_close($conn);
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
     <script type="text/javascript" src="script/validate.js"> </script>
+    <style>
+        #rightcolumn_2 {
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body>
