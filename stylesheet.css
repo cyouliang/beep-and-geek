@@ -55,6 +55,7 @@ header {
 }
 
 #login:hover {
+    cursor: default;
     color: blue;
 }
 
