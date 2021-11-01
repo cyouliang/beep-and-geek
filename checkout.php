@@ -21,6 +21,7 @@ mysqli_close($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="stylesheet.css">
+    <script type="text/javascript" src="script/validate.js"> </script>
 </head>
 
 <body>
@@ -71,9 +72,9 @@ mysqli_close($conn);
 
                     <?php if (!empty($products)) : ?>
                         Cart: <br>
-                        <table border="1">
+                        <table border="1" style="width:99%">
                             <tr>
-                                <th>Product ID</th>
+                                <th></th>
                                 <th>Product</th>
                                 <th>Color</th>
                                 <th>Price</th>
@@ -84,14 +85,17 @@ mysqli_close($conn);
                             <!-- php foreach loop embedded in html: https://stackoverflow.com/questions/10258345/php-simple-foreach-loop-with-html -->
                             <?php foreach ($products as $product) : ?>
                                 <tr>
-                                    <td align="center"><?= $product['ProductID']; ?></td>
-                                    <td align="left"><?= $product['ProductName']; ?></td>
-                                    <td align="left"><?= $product['Color']; ?></td>
-                                    <td align="center"><?= $product['Price']; ?></td>
+                                    <!--<td align="center"><?= $product['ProductID']; ?></td>-->
+                                    <td align="center"><img src="img/products/<?php echo $product['VariantImage']?>" alt="<?php echo $product['VariantImage']?>" style="width: 200px; height:200px" ></td>
+                                    <td align="center"><?= $product['ProductName']; ?></td>
+                                    <td align="center"><?= $product['Color']; ?></td>
+                                    <td align="center">$<?= $product['Price']; ?>.00</td>
                                     <?php
                                     //Check if there is enough stock
                                     if ($product["Stock"] >= $product["Quantity"])
-                                        echo '<td align="center"> ' . $product['Quantity'] . '</td>';
+                                    {
+                                        echo '<td align="center">'.$product['Quantity'].'</td>';
+                                    }
                                     else {
                                         $all_available = false;
                                         echo '<th align="center"> ' . $product['Quantity'] . '*</th>';
@@ -106,7 +110,18 @@ mysqli_close($conn);
                         <!-- Check if all items available before proceeding -->
                         <?php if ($all_available) : ?>
                             <form action="input_details.php">
-                                <input type="submit" value="Proceed with transaction!">
+                                <input type="submit" id="checkout" value="Checkout!">
+                            </form>
+
+                            <form action="" method="GET">
+                                <input type="hidden" value="clear">
+                                <input type="submit" id="clear" name="clear" value="Clear Cart">
+                                <?php
+                                    if(isset($_GET['clear'])){
+                                        unset($_SESSION['cart']);
+                                        header("Location: checkout.php");
+                                    }
+                                ?>
                             </form>
                         <?php else : ?>
                             <p><b>*Sorry one or more items are not available</b></p>
