@@ -132,7 +132,6 @@ mysqli_close($conn);
                         //Populate page with information from database
                         $counter = 0;
                         while ($row = mysqli_fetch_array($result)) {
-                            //TODO: Reduce spacing between each line
                             $divcontent = '
                                 <a href="product.php?product=' . $row['product'] . '">
                                 <img src="img/products/' . $row['image'] . '" alt = "' . $row['product'] . '"class="product-image">

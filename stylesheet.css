@@ -111,13 +111,13 @@ header {
 #topnavbar {
     display: grid;
     grid-row: 2 / 3;
-    background-color: white;
+    background-color: #222;
 }
 
 #topnavbar a {
     float: left;
     padding: 12px;
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 17px;
     width: 20%;
@@ -125,12 +125,17 @@ header {
     font-size: 16px;
     font-family: ‘Open Sans’;
     font-weight: 600;
-    color: #202020;
 }
 
 #topnavbar nav a:hover {
     color: blue;
     background-color: aliceblue;
+}
+
+#topnavbar .active_tab {
+    color: black;
+    background-color: aliceblue;
+    border: solid;
 }
 
 .rightcolumn .text {
