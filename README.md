@@ -16,6 +16,7 @@ index3.php is the home page
 ignore index2.php
 
 **Run scripts: connectDB.php --> createTables.php --> insertItems.php**
+**Database used is under localhost-myphpadmin**
 
 
 **_See design-document.docx for more info._**
