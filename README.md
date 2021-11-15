@@ -14,6 +14,7 @@ The objective of this project is to create a web portal for online purchase of c
 **To Note:**
 index3.php is the home page 
 ignore index2.php
+
 **Run scripts: connectDB.php --> createTables.php --> insertItems.php**
 
 
